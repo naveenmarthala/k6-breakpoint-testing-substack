@@ -1,0 +1,68 @@
+$ K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=k6_html_report_15_feb_2025_8_15pm_ist.html k6 run --out influxdb=http://localhost:8086/k6_latency_tests ./final_test_script_dynamic.js  2>> k6_test_stderr.log
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+     execution: local
+        script: ./final_test_script_dynamic.js
+ web dashboard: http://127.0.0.1:5665
+        output: InfluxDBv1 (http://localhost:8086)
+
+     scenarios: (100.00%) 14 scenarios, 4000 max VUs, 34m30s max duration (incl. graceful stop):
+              * scenario_01: 500.00 iterations/s for 1m0s (maxVUs: 2000, gracefulStop: 30s)
+              * scenario_02: 1000.00 iterations/s for 1m0s (maxVUs: 2000, startTime: 1m0s, gracefulStop: 30s)
+              * scenario_03: 1500.00 iterations/s for 1m0s (maxVUs: 2000, startTime: 2m0s, gracefulStop: 30s)
+              * scenario_04: 2000.00 iterations/s for 3m0s (maxVUs: 2000, startTime: 3m0s, gracefulStop: 30s)
+              * scenario_05: 2500.00 iterations/s for 2m0s (maxVUs: 2000, startTime: 6m0s, gracefulStop: 30s)
+              * scenario_06: 10000.00 iterations/s for 3m0s (maxVUs: 2000, startTime: 8m0s, gracefulStop: 30s)
+              * scenario_07: 3500.00 iterations/s for 1m0s (maxVUs: 2000, startTime: 11m0s, gracefulStop: 30s)
+              * scenario_08: 4000.00 iterations/s for 1m0s (maxVUs: 2000, startTime: 12m0s, gracefulStop: 30s)
+              * scenario_09: 15000.00 iterations/s for 3m0s (maxVUs: 2000, startTime: 13m0s, gracefulStop: 30s)
+              * scenario_10: 5000.00 iterations/s for 1m0s (maxVUs: 2000, startTime: 16m0s, gracefulStop: 30s)
+              * scenario_11: 5500.00 iterations/s for 2m0s (maxVUs: 2000, startTime: 17m0s, gracefulStop: 30s)
+              * scenario_12: 1000.00 iterations/s for 3m0s (maxVUs: 2000, startTime: 19m0s, gracefulStop: 30s)
+              * scenario_13: 6500.00 iterations/s for 2m0s (maxVUs: 2000, startTime: 22m0s, gracefulStop: 30s)
+              * scenario_14: 2500.00 iterations/s for 10m0s (maxVUs: 2000, startTime: 24m0s, gracefulStop: 30s)
+
+
+     ✗ status is 200
+      ↳  99% — ✓ 4089774 / ✗ 8501
+
+   ✓ checks.........................: 99.79%  4089774 out of 4098275
+     data_received..................: 762 MB  368 kB/s
+     data_sent......................: 2.2 GB  1.1 MB/s
+     dropped_iterations.............: 5112591 2469.835091/s
+     http_req_blocked...............: min=0s       avg=213.38ms med=604.54µs p(80)=7.76ms   p(90)=1s       p(95)=1.02s    p(99)=3.04s   p(99.50)=7.16s   p(99.90)=15.36s  p(99.975)=15.47s  p(99.99)=15.49s   max=15.67s
+     http_req_connecting............: min=0s       avg=211.9ms  med=371.02µs p(80)=5.2ms    p(90)=1s       p(95)=1.02s    p(99)=3.04s   p(99.50)=7.15s   p(99.90)=15.36s  p(99.975)=15.46s  p(99.99)=15.48s   max=15.57s
+   ✗ http_req_duration..............: min=0s       avg=432.84ms med=433.6ms  p(80)=498.73ms p(90)=542.3ms  p(95)=607.18ms p(99)=1.27s   p(99.50)=2.24s   p(99.90)=27.04s  p(99.975)=58.97s  p(99.99)=58.99s   max=1m0s
+       { expected_response:true }...: min=572.88µs avg=401.62ms med=433.7ms  p(80)=498.69ms p(90)=542.03ms p(95)=605.97ms p(99)=1.23s   p(99.50)=2.15s   p(99.90)=13.76s  p(99.975)=29.69s  p(99.99)=53.85s   max=58.84s
+   ✓ http_req_failed................: 0.20%   8502 out of 4098276
+     http_req_receiving.............: min=0s       avg=861.7µs  med=141.59µs p(80)=549.32µs p(90)=1.4ms    p(95)=3.17ms   p(99)=15.04ms p(99.50)=22.41ms p(99.90)=41.95ms p(99.975)=77.47ms p(99.99)=108.54ms max=1.29s
+     http_req_sending...............: min=0s       avg=1.14ms   med=90.97µs  p(80)=651.18µs p(90)=1.83ms   p(95)=4.49ms   p(99)=20.9ms  p(99.50)=30.84ms p(99.90)=68.37ms p(99.975)=111.9ms p(99.99)=143.7ms  max=1.08s
+     http_req_tls_handshaking.......: min=0s       avg=0s       med=0s       p(80)=0s       p(90)=0s       p(95)=0s       p(99)=0s      p(99.50)=0s      p(99.90)=0s      p(99.975)=0s      p(99.99)=0s       max=0s
+   ✗ http_req_waiting...............: min=0s       avg=430.84ms med=431.81ms p(80)=496.34ms p(90)=539ms    p(95)=603.76ms p(99)=1.27s   p(99.50)=2.24s   p(99.90)=27.04s  p(99.975)=58.97s  p(99.99)=58.98s   max=1m0s
+     http_reqs......................: 4098276 1979.830946/s
+     iteration_duration.............: min=757.63µs avg=692.63ms med=444.98ms p(80)=532.21ms p(90)=1.41s    p(95)=1.66s    p(99)=7.51s   p(99.50)=14.77s  p(99.90)=30.18s  p(99.975)=1m0s    p(99.99)=1m0s     max=1m1s
+     iterations.....................: 4098275 1979.830463/s
+     vus............................: 13      min=0                  max=3377
+     vus_max........................: 4000    min=4000               max=4000
+
+
+running (34m30.0s), 0000/4000 VUs, 4098275 complete and 566 interrupted iterations
+scenario_01 ✓ [======================================] 0000/2000 VUs  1m0s   500.00 iters/s
+scenario_02 ✓ [======================================] 0000/2000 VUs  1m0s   1000.00 iters/s
+scenario_03 ✓ [======================================] 0000/2000 VUs  1m0s   1500.00 iters/s
+scenario_04 ✓ [======================================] 0000/2000 VUs  3m0s   2000.00 iters/s
+scenario_05 ✓ [======================================] 0060/2000 VUs  2m0s   2500.00 iters/s
+scenario_06 ✓ [======================================] 0008/2000 VUs  3m0s   10000.00 iters/s
+scenario_07 ✓ [======================================] 0033/2000 VUs  1m0s   3500.00 iters/s
+scenario_08 ✓ [======================================] 0049/2000 VUs  1m0s   4000.00 iters/s
+scenario_09 ✓ [======================================] 0001/2000 VUs  3m0s   15000.00 iters/s
+scenario_10 ✓ [======================================] 0109/2000 VUs  1m0s   5000.00 iters/s
+scenario_11 ✓ [======================================] 0055/2000 VUs  2m0s   5500.00 iters/s
+scenario_12 ✓ [======================================] 0000/2000 VUs  3m0s   1000.00 iters/s
+scenario_13 ✓ [======================================] 0082/2000 VUs  2m0s   6500.00 iters/s
+scenario_14 ✓ [======================================] 0013/2000 VUs  10m0s  2500.00 iters/s
